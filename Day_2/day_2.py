@@ -28,6 +28,13 @@ def game_sum(games: [int]):
         sum += game
     return sum
 
+def minimum_power(games: [Game]):
+    sum = 0
+    for game in games:
+        sum += game.minimum_power()
+    return sum
+
 if __name__ == '__main__':
     games = [Game.from_string(line) for line in open('input.txt').read().splitlines()]
-    print(game_sum(possible_game_numbers(games)))
+    print("Game sum:", game_sum(possible_game_numbers(games)))
+    print("Minimum power:", minimum_power(games))

@@ -3,6 +3,11 @@ class Set:
         self.red = red
         self.green = green
         self.blue = blue
+
+    def __eq__(self, other):
+        if isinstance(other, Set):
+            return (self.red == other.red) and (self.green == other.green) and (self.blue == other.blue)
+        return False
 class Game:
     def __init__(self, game_num, sets: [Set]):
         self.game_num = game_num
@@ -27,3 +32,14 @@ class Game:
                     set.blue = int(count)
             sets.append(set)
         return cls(game_num, sets)
+
+    def minimum_set(self):
+        reds = [set.red for set in self.sets]
+        greens = [set.green for set in self.sets]
+        blues = [set.blue for set in self.sets]
+
+        return Set(max(reds), max(greens), max(blues))
+
+    def minimum_power(self):
+        minimum_set = self.minimum_set()
+        return minimum_set.red * minimum_set.green * minimum_set.blue
