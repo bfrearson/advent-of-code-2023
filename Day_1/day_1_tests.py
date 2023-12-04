@@ -1,6 +1,6 @@
 import unittest
 from day_1 import calibrate_line, calibration_sum, convert_to_digits
-class TestDay1Pt1(unittest.TestCase):
+class TestDay1(unittest.TestCase):
     def test_calibrate_line_should_return_correct_value(self):
         line = "1abc2"
         result = calibrate_line(line)
