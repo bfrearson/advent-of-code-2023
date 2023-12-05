@@ -8,13 +8,17 @@ Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83
 Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
 Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"""
 test_scores = [8,2,2,1,0,0]
-class MyTestCase(unittest.TestCase):
+class Day4Tests(unittest.TestCase):
+    # Part 1
     def test_get_card_score(self):
         scores = []
         for line in test_cards.splitlines():
             scores.append(get_card_score(line))
         self.assertEqual(test_scores, scores)
         self.assertEqual(sum(scores), 13)
+    # Part 2
+    def test_get_total_cards(self):
+        self.assertEqual(get_total_cards(test_cards), 30)
 
 
 if __name__ == '__main__':
