@@ -27,7 +27,14 @@ def get_all_record_permutations(input):
 
     return running_product_of_permutations
 
+def get_compressed_permutations(input):
+    time, distance = input.splitlines()
+    time = int(time.split(":")[1].replace(" ", ""))
+    distance = int(distance.split(":")[1].replace(" ", ""))
+    return len(find_integer_solutions(time, distance))
+
 
 if __name__ == "__main__":
     input = open("input.txt", "r").read()
-    print(get_all_record_permutations(input))
+    print(f"part 1:{get_all_record_permutations(input)}")
+    print(f"part 2:{get_compressed_permutations(input)}")

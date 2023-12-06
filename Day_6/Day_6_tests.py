@@ -7,6 +7,7 @@ Distance:  9  40  200
 """
 
 class Day_6_tests(unittest.TestCase):
+    # Part 1
     def test_get_time_bounds(self):
         roots = get_time_bounds(7, 12)
         self.assertEqual(roots.tolist(), [3, 4])
@@ -22,6 +23,11 @@ class Day_6_tests(unittest.TestCase):
     def test_get_all_record_permutations(self):
         permutations = get_all_record_permutations(test_data)
         self.assertEqual(permutations, 288)
+
+    # Part 2
+    def test_get_compressed_permutations(self):
+        permutations = get_compressed_permutations(test_data)
+        self.assertEqual(permutations, 71503)
 
 if __name__ == '__main__':
     unittest.main()
