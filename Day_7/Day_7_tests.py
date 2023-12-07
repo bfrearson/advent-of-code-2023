@@ -34,5 +34,43 @@ class MyTestCase(unittest.TestCase):
     def test_calculate_winnings(self):
         self.assertEqual(6440, calculate_winnings(test_hands))
 
+
+# Part 2
+    def test_playing_jokers(self):
+        five_hand = Hand("JJJJJ", 123)
+        five_hand_with_j = Hand("AAAAJ", 123)
+        five_hand_with_2j = Hand("AAAJJ", 123)
+        five_hand_with_4j = Hand("AJJJJ", 123)
+
+        four_hand_with_j = Hand("AAAKJ", 123)
+        four_hand_with_2j = Hand("AAJKJ", 123)
+        four_hand_with_3j = Hand("AJJKJ", 123)
+
+        full_house_hand_with_J = Hand("AAKKJ", 123)
+
+        three_hand_with_j = Hand("AAKQJ", 123)
+        three_hand_with_2j = Hand("AKQJJ", 123)
+
+        pair_hand_with_j = Hand("AKQTJ", 123)
+
+        self.assertEqual(HandType.FIVE_OF_A_KIND, five_hand.hand_type(playing_jokers=True))
+        self.assertEqual(HandType.FIVE_OF_A_KIND, five_hand_with_j.hand_type(playing_jokers=True))
+        self.assertEqual(HandType.FIVE_OF_A_KIND, five_hand_with_2j.hand_type(playing_jokers=True))
+        self.assertEqual(HandType.FIVE_OF_A_KIND, five_hand_with_4j.hand_type(playing_jokers=True))
+
+        self.assertEqual(HandType.FOUR_OF_A_KIND, four_hand_with_j.hand_type(playing_jokers=True))
+        self.assertEqual(HandType.FOUR_OF_A_KIND, four_hand_with_2j.hand_type(playing_jokers=True))
+        self.assertEqual(HandType.FOUR_OF_A_KIND, four_hand_with_3j.hand_type(playing_jokers=True))
+
+        self.assertEqual(HandType.FULL_HOUSE, full_house_hand_with_J.hand_type(playing_jokers=True))
+
+        self.assertEqual(HandType.THREE_OF_A_KIND, three_hand_with_j.hand_type(playing_jokers=True))
+        self.assertEqual(HandType.THREE_OF_A_KIND, three_hand_with_2j.hand_type(playing_jokers=True))
+
+        self.assertEqual(HandType.PAIR, pair_hand_with_j.hand_type(playing_jokers=True))
+
+    def test_calculate_winnings_with_jokers(self):
+        self.assertEqual(5905, calculate_winnings(test_hands, playing_jokers=True))
+
 if __name__ == '__main__':
     unittest.main()

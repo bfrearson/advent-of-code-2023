@@ -4,13 +4,20 @@ class Hand:
         self.cards = cards
         self.bid = bid
 
-    def hand_type(self):
+    def hand_type(self, playing_jokers=False):
         counts = {}
         for card in self.cards:
             if counts.get(card):
                 counts[card] += 1
             else:
                 counts[card] = 1
+
+
+        if playing_jokers and "J" in counts and counts["J"] < 5:
+            j_count = counts["J"]
+            del counts["J"]
+            highest_count_key = sorted(counts.items(), key=lambda x: x[1], reverse=True)[0][0]
+            counts[highest_count_key] += j_count
         keys = list(counts)
 
         if counts[keys[0]] == 5:
