@@ -11,7 +11,15 @@ class Day_9_tests(unittest.TestCase):
         computed_values = []
         for line in test_input.splitlines():
             next_value = compute_next_value([int(number) for number in line.split()])
-            print(next_value)
+            computed_values.append(next_value)
+        self.assertEqual(expected_values, computed_values)
+        self.assertEqual(sum(expected_values), sum(computed_values))
+
+    def test_compute_previous_value(self):
+        expected_values = [-3, 0, 5]
+        computed_values = []
+        for line in test_input.splitlines():
+            next_value = compute_previous_value([int(number) for number in line.split()])
             computed_values.append(next_value)
         self.assertEqual(expected_values, computed_values)
         self.assertEqual(sum(expected_values), sum(computed_values))
