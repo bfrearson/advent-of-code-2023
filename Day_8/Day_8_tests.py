@@ -19,7 +19,7 @@ AAA = (BBB, BBB)
 BBB = (AAA, ZZZ)
 ZZZ = (ZZZ, ZZZ)
 """
-test_network2 = """\
+test_network3 = """\
 LR
 
 11A = (11B, XXX)
